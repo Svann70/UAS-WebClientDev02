@@ -4,12 +4,11 @@
 
 @section('content')
 <!-- Hero Section (Editorial Warm Ground, Distinct Hierarchy, Anti-Slop copy) -->
-<section class="bg-stone-900 text-stone-100 rounded-2xl p-8 sm:p-12 mb-12 relative overflow-hidden border border-stone-800 shadow-sm">
-    <div class="max-w-2xl relative z-10">
-        <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 uppercase tracking-wider mb-3">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Sentra Produk Pilihan Daerah
-        </span>
+<section class="bg-stone-900 text-stone-100 rounded-2xl p-8 sm:p-12 mb-12 border border-stone-800 shadow-sm">
+    <div class="max-w-2xl">
+        <p class="text-xs font-semibold text-stone-400 uppercase tracking-widest mb-3">
+            Katalog Produk Pilihan Daerah
+        </p>
         <h1 class="font-display text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4 leading-[1.15]">
             Langsung dari Dapur & Pengrajin Nusantara.
         </h1>
@@ -28,9 +27,6 @@
             </button>
         </form>
     </div>
-    
-    <!-- Background Decor (Minimal Subtle Shape) -->
-    <div class="absolute -right-16 -bottom-16 w-80 h-80 rounded-full bg-emerald-950/40 pointer-events-none blur-3xl"></div>
 </section>
 
 <!-- Categories Section (Warm Pill Navigation) -->
