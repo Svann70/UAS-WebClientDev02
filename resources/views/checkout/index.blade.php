@@ -1,58 +1,76 @@
 @extends('layouts.app')
 
-@section('title', 'Checkout')
+@section('title', 'Alamat Pengiriman & Checkout')
 
 @section('content')
-<h1 class="text-xl font-bold mb-4">Checkout</h1>
+<div class="mb-6">
+    <h1 class="font-display text-2xl font-extrabold text-stone-900 tracking-tight">Checkout Pesanan</h1>
+    <p class="text-xs text-stone-500 mt-1">Lengkapi alamat pengiriman untuk proses serah terima barang dari toko mitra.</p>
+</div>
 
-<div class="grid md:grid-cols-3 gap-6">
+<div class="grid md:grid-cols-3 gap-8 items-start">
     <div class="md:col-span-2">
-        <form method="POST" action="{{ route('checkout.process') }}" class="bg-white border border-gray-200 rounded-lg p-5 space-y-4">
+        <form method="POST" action="{{ route('checkout.process') }}" class="bg-white border border-stone-200/90 rounded-2xl p-6 sm:p-8 space-y-5 shadow-sm">
             @csrf
 
             <div>
-                <label class="block text-sm font-medium mb-1">Alamat Pengiriman</label>
+                <label class="block text-xs font-bold text-stone-800 mb-1.5 uppercase tracking-wide">
+                    Alamat Lengkap Pengiriman <span class="text-rose-500">*</span>
+                </label>
                 <textarea name="shipping_address" rows="3" required maxlength="500"
-                          placeholder="Nama penerima, alamat lengkap, kota, kode pos"
-                          class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">{{ old('shipping_address', $defaultAddress) }}</textarea>
+                          placeholder="Nama lengkap penerima, nomor telepon aktif, jalan, RT/RW, kelurahan, kecamatan, kota/kabupaten, kode pos"
+                          class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3.5 py-2.5 text-sm text-stone-900 font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500">{{ old('shipping_address', $defaultAddress) }}</textarea>
+                <p class="text-[11px] text-stone-400 mt-1">Pastikan nomor kontak penerima dapat dihubungi kurir pengantar.</p>
             </div>
 
             <div>
-                <label class="block text-sm font-medium mb-1">Catatan <span class="text-gray-400">(opsional)</span></label>
+                <label class="block text-xs font-bold text-stone-800 mb-1.5 uppercase tracking-wide">
+                    Catatan Pesanan <span class="text-stone-400 font-normal lowercase">(opsional)</span>
+                </label>
                 <textarea name="notes" rows="2" maxlength="500"
-                          placeholder="mis. titip di pos keamanan"
-                          class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">{{ old('notes') }}</textarea>
+                          placeholder="Contoh: Titipkan di pos satpam atau jangan dibanting (makanan mudah remuk)"
+                          class="w-full bg-stone-50 border border-stone-200 rounded-lg px-3.5 py-2.5 text-sm text-stone-900 font-medium focus:outline-none focus:ring-2 focus:ring-emerald-500">{{ old('notes') }}</textarea>
             </div>
 
-            <div class="bg-amber-50 border border-amber-200 rounded p-3 text-xs text-amber-800">
-                Pembayaran dilakukan via transfer bank. Setelah pesanan dibuat, Anda akan mendapat
-                kode pesanan dan instruksi untuk mengunggah bukti transfer.
+            <div class="bg-emerald-50/80 border border-emerald-200/80 rounded-xl p-4 text-xs text-emerald-900 flex items-start gap-3">
+                <svg class="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="leading-relaxed">
+                    <strong class="font-bold block mb-0.5">Metode Pembayaran Transfer Manual:</strong>
+                    Setelah menekan tombol buat pesanan, nomor rekening bank dan instruksi unggah foto bukti transfer akan ditampilkan di halaman detail pesanan.
+                </div>
             </div>
 
             <button type="submit"
-                    class="w-full bg-emerald-600 text-white py-2.5 rounded text-sm font-medium hover:bg-emerald-700">
-                Buat Pesanan
+                    class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-lg text-sm transition shadow-sm">
+                Konfirmasi & Buat Pesanan Sekarang &rarr;
             </button>
         </form>
     </div>
 
+    <!-- Summary Sidebar -->
     <div>
-        <div class="bg-white border border-gray-200 rounded-lg p-5">
-            <h2 class="text-sm font-bold mb-3">Ringkasan Pesanan</h2>
-            <ul class="space-y-3 text-sm">
+        <div class="bg-white border border-stone-200/90 rounded-2xl p-6 shadow-sm sticky top-24">
+            <h2 class="font-display text-sm font-bold text-stone-900 mb-4 pb-3 border-b border-stone-100 uppercase tracking-wide">
+                Ringkasan Belanja
+            </h2>
+            <ul class="space-y-3.5 text-sm divide-y divide-stone-50">
                 @foreach ($items as $item)
-                    <li class="flex justify-between gap-3">
+                    <li class="flex justify-between gap-3 pt-2 first:pt-0">
                         <div>
-                            <p class="font-medium">{{ $item['product']->name }}</p>
-                            <p class="text-xs text-gray-500">{{ $item['product']->store->name }} · {{ $item['qty'] }}x</p>
+                            <p class="font-display text-xs font-bold text-stone-900">{{ $item['product']->name }}</p>
+                            <p class="text-[11px] text-stone-500 mt-0.5">{{ $item['product']->store->name }} · {{ $item['qty'] }} unit</p>
                         </div>
-                        <span class="whitespace-nowrap">Rp {{ number_format($item['subtotal'], 0, ',', '.') }}</span>
+                        <span class="font-semibold text-xs text-stone-800 whitespace-nowrap">
+                            Rp {{ number_format($item['subtotal'], 0, ',', '.') }}
+                        </span>
                     </li>
                 @endforeach
             </ul>
-            <div class="border-t border-gray-200 mt-3 pt-3 flex justify-between text-sm font-bold">
-                <span>Total</span>
-                <span class="text-emerald-700">Rp {{ number_format($total, 0, ',', '.') }}</span>
+            <div class="border-t border-stone-200 mt-4 pt-4 flex justify-between items-baseline">
+                <span class="font-display text-xs font-bold text-stone-600 uppercase">Total Akhir</span>
+                <span class="font-display text-lg font-black text-emerald-700">
+                    Rp {{ number_format($total, 0, ',', '.') }}
+                </span>
             </div>
         </div>
     </div>
