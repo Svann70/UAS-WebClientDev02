@@ -45,14 +45,6 @@
 </head>
 <body class="bg-[#FAF9F5] text-stone-900 min-h-screen flex flex-col antialiased selection:bg-brand-100 selection:text-brand-900">
 
-<!-- Top Announcement Bar -->
-<div class="bg-stone-900 text-stone-300 text-xs py-2 px-4 border-b border-stone-800">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-        <p class="font-medium tracking-wide">Pemberdayaan Digital UMKM Kuliner & Kerajinan Daerah</p>
-        <span class="text-stone-400 hidden sm:inline">Kurasi Produk Asli Nusantara</span>
-    </div>
-</div>
-
 <!-- Main Navigation -->
 <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200/80">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
