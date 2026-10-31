@@ -34,83 +34,93 @@
     <!-- Product Info Column -->
     <div class="flex flex-col justify-between">
         <div>
-            <div class="inline-block bg-emerald-50 text-emerald-800 border border-emerald-200/80 text-[11px] font-bold px-2.5 py-1 rounded-md mb-3 uppercase tracking-wider">
-                {{ $product->category->name }}
-            </div>
+            <div>
+                <span class="inline-block bg-brand-50 text-brand-800 border border-brand-200/80 text-[11px] font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">
+                    {{ $product->category->name }}
+                </span>
 
-            <h1 class="font-display text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight mb-3 leading-snug">
-                {{ $product->name }}
-            </h1>
+                <h1 class="font-display text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight mb-3 leading-snug">
+                    {{ $product->name }}
+                </h1>
 
-            <div class="font-display text-3xl font-black text-stone-900 mb-6 pb-6 border-b border-stone-100">
-                Rp {{ number_format((float) $product->price, 0, ',', '.') }}
-            </div>
-
-            <!-- Merchant Store Badge -->
-            <div class="bg-stone-50 border border-stone-200/70 rounded-xl p-4 mb-6 flex items-center justify-between">
-                <div>
-                    <span class="text-[11px] text-stone-500 font-medium block">Disediakan langsung oleh mitra:</span>
-                    <a href="{{ route('catalog.store', $product->store->slug) }}" class="font-display font-bold text-stone-900 hover:text-emerald-700 transition">
-                        {{ $product->store->name }}
-                    </a>
-                    <span class="text-xs text-stone-500 block mt-0.5">{{ $product->store->city }}</span>
+                <div class="font-display text-3xl font-black text-stone-900 mb-6 pb-6 border-b border-stone-100">
+                    Rp {{ number_format((float) $product->price, 0, ',', '.') }}
                 </div>
-                <a href="{{ route('catalog.store', $product->store->slug) }}" class="text-xs font-semibold text-emerald-700 hover:underline">
-                    Kunjungi Toko &rarr;
-                </a>
-            </div>
 
-            <div class="space-y-1.5 text-xs text-stone-600 mb-6">
-                <div class="flex items-center gap-2">
-                    <span class="font-semibold text-stone-700 w-24">Ketersediaan:</span>
-                    @if ($product->stock > 0)
-                        <span class="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">Tersedia {{ $product->stock }} unit</span>
-                    @else
-                        <span class="text-rose-700 font-bold bg-rose-50 px-2 py-0.5 rounded">Stok Habis</span>
-                    @endif
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="font-semibold text-stone-700 w-24">Pengiriman:</span>
-                    <span>Dikirim dari kota {{ $product->store->city }}</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Action Area -->
-        <div class="pt-4 border-t border-stone-100">
-            @auth
-                @if (auth()->user()->isCustomer())
-                    @if ($product->stock > 0)
-                        <form method="POST" action="{{ route('cart.add', $product->id) }}" class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-end">
-                            @csrf
-                            <div>
-                                <label class="block text-xs font-bold text-stone-700 mb-1.5">Jumlah Beli</label>
-                                <input type="number" name="quantity" value="1" min="1" max="{{ $product->stock }}"
-                                       class="w-full sm:w-28 border border-stone-300 rounded-lg px-3 py-2.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <!-- Merchant Store Badge -->
+                <div class="bg-stone-50 border border-stone-200/70 rounded-2xl p-4 mb-6 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        @if ($product->store->logo)
+                            <img src="{{ asset('storage/' . $product->store->logo) }}" class="w-12 h-12 rounded-xl object-cover border border-stone-200 shadow-sm" alt="{{ $product->store->name }}">
+                        @else
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-800 font-bold flex items-center justify-center text-lg">
+                                {{ mb_substr($product->store->name, 0, 1) }}
                             </div>
-                            <button type="submit"
-                                    class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-2.5 rounded-lg text-sm transition shadow-sm flex items-center justify-center gap-2">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                                <span>Tambah ke Keranjang</span>
-                            </button>
-                        </form>
+                        @endif
+                        <div>
+                            <span class="text-[10px] text-stone-500 font-medium block">Disediakan oleh:</span>
+                            <a href="{{ route('catalog.store', $product->store->slug) }}" class="font-display font-bold text-stone-900 hover:text-brand-700 transition">
+                                {{ $product->store->name }}
+                            </a>
+                            <span class="text-xs text-stone-500 block mt-0.5">{{ $product->store->city }}</span>
+                        </div>
+                    </div>
+                    <a href="{{ route('catalog.store', $product->store->slug) }}" class="text-xs font-semibold text-brand-700 hover:underline">
+                        Kunjungi Toko &rarr;
+                    </a>
+                </div>
+
+                <div class="space-y-1.5 text-xs text-stone-600 mb-6">
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-stone-700 w-24">Ketersediaan:</span>
+                        @if ($product->stock > 0)
+                            <span class="text-brand-700 font-bold bg-brand-50 border border-brand-200/60 px-2.5 py-0.5 rounded-full">Tersedia {{ $product->stock }} unit</span>
+                        @else
+                            <span class="text-rose-700 font-bold bg-rose-50 px-2 py-0.5 rounded-full">Stok Habis</span>
+                        @endif
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-stone-700 w-24">Pengiriman:</span>
+                        <span>Dikirim dari kota {{ $product->store->city }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Area -->
+            <div class="pt-4 border-t border-stone-100">
+                @auth
+                    @if (auth()->user()->isCustomer())
+                        @if ($product->stock > 0)
+                            <form method="POST" action="{{ route('cart.add', $product->id) }}" class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-end">
+                                @csrf
+                                <div>
+                                    <label class="block text-xs font-bold text-stone-700 mb-1.5">Jumlah Beli</label>
+                                    <input type="number" name="quantity" value="1" min="1" max="{{ $product->stock }}"
+                                           class="w-full sm:w-28 border border-stone-300 rounded-xl px-3 py-2.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-brand-600">
+                                </div>
+                                <button type="submit"
+                                        class="flex-1 bg-brand-700 hover:bg-brand-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition shadow-sm flex items-center justify-center gap-2 active:scale-95">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                                    <span>Tambah ke Keranjang</span>
+                                </button>
+                            </form>
+                        @else
+                            <div class="bg-stone-100 text-stone-600 px-4 py-3 rounded-xl text-xs font-medium text-center">
+                                Produk ini sedang habis stok. Silakan cek kembali dalam waktu dekat.
+                            </div>
+                        @endif
                     @else
-                        <div class="bg-stone-100 text-stone-600 px-4 py-3 rounded-lg text-xs font-medium text-center">
-                            Produk ini sedang habis stok. Silakan cek kembali dalam waktu dekat.
+                        <div class="text-xs text-stone-500 bg-stone-50 border border-stone-200 p-3 rounded-xl">
+                            Anda masuk sebagai {{ auth()->user()->role }}. Masuk sebagai akun pembeli untuk memesan produk ini.
                         </div>
                     @endif
                 @else
-                    <div class="text-xs text-stone-500 bg-stone-50 border border-stone-200 p-3 rounded-lg">
-                        Anda masuk sebagai {{ auth()->user()->role }}. Masuk sebagai akun pembeli untuk memesan produk ini.
-                    </div>
-                @endif
-            @else
-                <a href="{{ route('login') }}"
-                   class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-lg text-sm transition shadow-sm text-center block">
-                    Masuk Akun untuk Membeli
-                </a>
-            @endauth
-        </div>
+                    <a href="{{ route('login') }}"
+                       class="w-full bg-brand-700 hover:bg-brand-800 text-white font-bold px-6 py-3.5 rounded-xl text-sm transition shadow-sm text-center block">
+                        Masuk Akun untuk Membeli
+                    </a>
+                @endauth
+            </div>
     </div>
 </div>
 

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgArabika" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF5FF" />
+      <stop offset="100%" stop-color="#F3E8FF" />
+    </linearGradient>
+    <linearGradient id="pouchKraft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="50%" stop-color="#B45309" />
+      <stop offset="100%" stop-color="#78350F" />
+    </linearGradient>
+    <filter id="pouchShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#78350F" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="500" height="500" fill="url(#bgArabika)"/>
+
+  <g filter="url(#pouchShadow)">
+    <ellipse cx="250" cy="385" rx="85" ry="18" fill="#1E293B" opacity="0.2"/>
+
+    <!-- Coffee Standing Pouch Shape -->
+    <path d="M 180 120 L 320 120 L 335 360 Q 250 380 165 360 Z" fill="url(#pouchKraft)"/>
+    <path d="M 175 145 L 325 145" stroke="#78350F" stroke-width="2"/>
+    <circle cx="250" cy="180" r="10" fill="#92400E" stroke="#FDE68A" stroke-width="2"/>
+
+    <!-- Label -->
+    <rect x="185" y="210" width="130" height="120" rx="8" fill="#FFFFFF"/>
+    <rect x="195" y="220" width="110" height="24" rx="4" fill="#6B21A8"/>
+    <text x="250" y="236" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#FFFFFF" text-anchor="middle">ARABIKA SPECIALTY</text>
+    
+    <text x="250" y="265" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#1E293B" text-anchor="middle">PUNTANG</text>
+    <text x="250" y="280" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#D97706" text-anchor="middle">NATURAL PROCESS</text>
+    <line x1="205" y1="292" x2="295" y2="292" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="250" y="306" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#64748B" text-anchor="middle">Sweet Mango &amp; Honey Notes</text>
+    <text x="250" y="320" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#0F172A" text-anchor="middle">Netto 200 Gram</text>
+  </g>
+
+  <!-- Roasted Coffee Beans scattered -->
+  <ellipse cx="140" cy="370" rx="14" ry="10" fill="#451A03" transform="rotate(-25 140 370)"/>
+  <ellipse cx="360" cy="365" rx="15" ry="11" fill="#451A03" transform="rotate(30 360 365)"/>
+
+  <!-- Tag Pill -->
+  <rect x="30" y="30" width="140" height="34" rx="17" fill="#6B21A8"/>
+  <text x="100" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" text-anchor="middle">SINGLE ORIGIN</text>
+
+  <text x="250" y="440" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="800" fill="#581C87" text-anchor="middle">Arabika Puntang Natural</text>
+  <text x="250" y="465" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#7E22CE" text-anchor="middle">Juara Kopi Nusantara Specialty</text>
+</svg>

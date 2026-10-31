@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E" />
+      <stop offset="50%" stop-color="#16A34A" />
+      <stop offset="100%" stop-color="#15803D" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <filter id="markShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle container -->
+  <rect width="200" height="200" rx="48" fill="#FFFFFF" />
+  
+  <g filter="url(#markShadow)">
+    <!-- Outer green ribbon forming upper & left arc of "G" -->
+    <path d="M 148 64 
+             C 125 36, 68 36, 46 68 
+             C 24 100, 24 135, 52 162 
+             C 76 186, 122 186, 146 166 
+             L 132 144 
+             C 114 158, 86 158, 68 142 
+             C 48 122, 48 95, 66 72 
+             C 82 52, 120 52, 134 68 
+             Z" 
+          fill="url(#emeraldGrad)"/>
+
+    <!-- Interlocking amber ribbon clasping inward to complete the "G" crossbar (Handshake Gandeng) -->
+    <path d="M 100 112 
+             L 162 112 
+             C 168 112, 172 116, 172 122 
+             L 172 150 
+             C 172 156, 166 162, 160 162 
+             L 136 162 
+             C 134 162, 132 160, 130 158 
+             L 130 134 
+             L 100 134 
+             C 94 134, 90 129, 90 123 
+             C 90 117, 94 112, 100 112 
+             Z" 
+          fill="url(#amberGrad)"/>
+
+    <!-- Interlocking clasp accent knot -->
+    <circle cx="102" cy="123" r="7" fill="#FEF3C7"/>
+  </g>
+</svg>

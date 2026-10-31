@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="emGradH" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E" />
+      <stop offset="50%" stop-color="#16A34A" />
+      <stop offset="100%" stop-color="#15803D" />
+    </linearGradient>
+    <linearGradient id="ambGradH" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <filter id="hShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Left Icon Mark -->
+  <g transform="translate(10, 10)" filter="url(#hShadow)">
+    <rect width="80" height="80" rx="22" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.2"/>
+    <g transform="translate(8, 8) scale(0.32)">
+      <!-- Upper & Left Arc -->
+      <path d="M 148 64 C 125 36, 68 36, 46 68 C 24 100, 24 135, 52 162 C 76 186, 122 186, 146 166 L 132 144 C 114 158, 86 158, 68 142 C 48 122, 48 95, 66 72 C 82 52, 120 52, 134 68 Z" fill="url(#emGradH)"/>
+      <!-- Clasping Bar -->
+      <path d="M 100 112 L 162 112 C 168 112, 172 116, 172 122 L 172 150 C 172 156, 166 162, 160 162 L 136 162 C 134 162, 132 160, 130 158 L 130 134 L 100 134 C 94 134, 90 129, 90 123 C 90 117, 94 112, 100 112 Z" fill="url(#ambGradH)"/>
+      <circle cx="102" cy="123" r="7" fill="#FEF3C7"/>
+    </g>
+  </g>
+
+  <!-- Clean Wordmark GANDENG -->
+  <g transform="translate(108, 0)">
+    <text x="0" y="62" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="42" font-weight="900" fill="#1C1917" letter-spacing="-1.5">GANDENG</text>
+    <circle cx="232" cy="56" r="4.5" fill="#16A34A"/>
+  </g>
+</svg>

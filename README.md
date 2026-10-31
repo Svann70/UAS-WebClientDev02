@@ -1,11 +1,11 @@
-# GANDENG: Gerakan Anak Nusantara Dagang
+# GANDENG
 > **Platform Marketplace & Agregator Produk UMKM Lokal**  
 > Proyek UAS Web Application Development — Universitas Cakrawala (Semester 3)
 
 ---
 
 ## 1. Deskripsi Proyek
-**GANDENG (Gerakan Anak Nusantara Dagang)** adalah aplikasi web Full-Stack dinamis berbasis server-side MVC menggunakan **Laravel 11** dan **MySQL/MariaDB**. Aplikasi ini dirancang sebagai platform agregator UMKM yang menghubungkan pelaku usaha mikro/kecil dari berbagai daerah dengan pembeli, dilengkapi pembagian hak akses peran (*Role-Based Access Control*), operasi CRUD multi-entitas, katalog produk dinamis, transaksi checkout terisolasi (*database transactions*), dan proteksi keamanan tingkat aplikasi terhadap kerentanan web modern.
+**GANDENG** adalah aplikasi web Full-Stack dinamis berbasis server-side MVC menggunakan **Laravel 11** dan **MySQL/MariaDB**. Aplikasi ini dirancang sebagai platform agregator UMKM yang menghubungkan pelaku usaha mikro/kecil dari berbagai daerah dengan pembeli, dilengkapi pembagian hak akses peran (*Role-Based Access Control*), operasi CRUD multi-entitas, katalog produk dinamis, transaksi checkout terisolasi (*database transactions*), dan proteksi keamanan tingkat aplikasi terhadap kerentanan web modern.
 
 ---
 

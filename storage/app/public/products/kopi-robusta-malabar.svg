@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgRobusta" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEFCE8" />
+      <stop offset="100%" stop-color="#FEF08A" />
+    </linearGradient>
+    <linearGradient id="pouchDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#292524" />
+      <stop offset="50%" stop-color="#1C1917" />
+      <stop offset="100%" stop-color="#0C0A09" />
+    </linearGradient>
+    <filter id="darkPouchShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="500" height="500" fill="url(#bgRobusta)"/>
+
+  <g filter="url(#darkPouchShadow)">
+    <ellipse cx="250" cy="385" rx="85" ry="18" fill="#1E293B" opacity="0.25"/>
+
+    <path d="M 180 120 L 320 120 L 335 360 Q 250 380 165 360 Z" fill="url(#pouchDark)"/>
+    <path d="M 175 145 L 325 145" stroke="#44403C" stroke-width="2"/>
+    <circle cx="250" cy="180" r="10" fill="#1C1917" stroke="#CA8A04" stroke-width="2"/>
+
+    <!-- Gold Foil Label -->
+    <rect x="185" y="210" width="130" height="120" rx="8" fill="#1C1917" stroke="#EAB308" stroke-width="2"/>
+    <rect x="195" y="220" width="110" height="24" rx="4" fill="#CA8A04"/>
+    <text x="250" y="236" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="#000000" text-anchor="middle">ROBUSTA MALABAR</text>
+    
+    <text x="250" y="265" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" fill="#FEF08A" text-anchor="middle">HONEY PROCESS</text>
+    <text x="250" y="280" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="#FBBF24" text-anchor="middle">DARK ROAST &amp; BOLD</text>
+    <line x1="205" y1="292" x2="295" y2="292" stroke="#44403C" stroke-width="1"/>
+    <text x="250" y="306" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#D6D3D1" text-anchor="middle">Caramel Dark Chocolate</text>
+    <text x="250" y="320" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="700" fill="#FDE047" text-anchor="middle">Netto 250 Gram</text>
+  </g>
+
+  <!-- Tag Pill -->
+  <rect x="30" y="30" width="130" height="34" rx="17" fill="#854D0E"/>
+  <text x="95" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" text-anchor="middle">EXTRA BOLD</text>
+
+  <text x="250" y="440" font-family="'Plus Jakarta Sans', sans-serif" font-size="18" font-weight="800" fill="#713F12" text-anchor="middle">Robusta Malabar Honey</text>
+  <text x="250" y="465" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#854D0E" text-anchor="middle">Crema Tebal &amp; Mantap Kopi Susu</text>
+</svg>

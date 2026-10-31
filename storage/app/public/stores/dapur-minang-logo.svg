@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgMinang" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#991B1B" />
+      <stop offset="100%" stop-color="#450A0A" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="50%" stop-color="#EAB308" />
+      <stop offset="100%" stop-color="#CA8A04" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" rx="40" fill="url(#bgMinang)" />
+  <circle cx="200" cy="200" r="160" fill="none" stroke="url(#goldGrad)" stroke-width="4" stroke-dasharray="8 6" opacity="0.6"/>
+  
+  <!-- Rumah Gadang Roof Silhouette Motif -->
+  <path d="M 90 220 C 130 190, 150 140, 160 110 C 170 145, 185 180, 200 185 C 215 180, 230 145, 240 110 C 250 140, 270 190, 310 220 L 290 240 C 260 215, 245 195, 235 195 C 225 195, 215 220, 200 220 C 185 220, 175 195, 165 195 C 155 195, 140 215, 110 240 Z" fill="url(#goldGrad)" filter="url(#shadow)"/>
+  
+  <!-- Chili & Wok Emblem -->
+  <ellipse cx="200" cy="265" rx="55" ry="16" fill="#1C1917" opacity="0.5"/>
+  <path d="M 170 260 Q 200 290 230 255 Q 215 275 185 270 Z" fill="#DC2626"/>
+  <path d="M 168 260 Q 160 255 158 248" stroke="#15803D" stroke-width="4" stroke-linecap="round" fill="none"/>
+
+  <text x="200" y="320" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="24" font-weight="800" fill="#FEF08A" text-anchor="middle" letter-spacing="2">DAPUR MINANG</text>
+  <text x="200" y="345" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="14" font-weight="600" fill="#FCA5A5" text-anchor="middle" letter-spacing="4">RESEP ASLI PADANG</text>
+</svg>

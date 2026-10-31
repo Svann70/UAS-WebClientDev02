@@ -57,38 +57,66 @@
 @else
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
         @foreach ($products as $product)
-            <a href="{{ route('catalog.show', $product->slug) }}"
-               class="group bg-white border border-stone-200/90 rounded-xl overflow-hidden hover:border-stone-300 hover:shadow-md transition flex flex-col">
-                <div class="relative w-full aspect-square bg-stone-100 overflow-hidden border-b border-stone-100">
-                    @if ($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
-                             class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                    @else
-                        <div class="w-full h-full flex items-center justify-center text-stone-400 text-xs">Tanpa foto</div>
-                    @endif
-                    <span class="absolute bottom-2 left-2 bg-stone-900/80 backdrop-blur-sm text-stone-200 text-[10px] font-semibold px-2 py-0.5 rounded">
-                        {{ $product->store->city }}
-                    </span>
-                </div>
-                <div class="p-4 flex-1 flex flex-col justify-between">
-                    <div>
-                        <p class="text-[11px] font-semibold uppercase tracking-wider text-emerald-700 mb-1 truncate">
+            <div class="group bg-white border border-stone-200/90 rounded-2xl overflow-hidden hover:border-brand-600/40 hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                    <!-- Product Image Container with Link -->
+                    <a href="{{ route('catalog.show', $product->slug) }}" class="block relative w-full aspect-square bg-stone-100 overflow-hidden border-b border-stone-100">
+                        @if ($product->image)
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                        @else
+                            <div class="w-full h-full flex flex-col items-center justify-center text-stone-400 p-4 text-center">
+                                <svg class="w-8 h-8 text-stone-300 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <span class="text-[11px] font-medium">Foto Produk</span>
+                            </div>
+                        @endif
+                        <span class="absolute bottom-2 left-2 bg-stone-900/80 backdrop-blur-sm text-stone-200 text-[10px] font-semibold px-2 py-0.5 rounded">
+                            {{ $product->store->city }}
+                        </span>
+                    </a>
+
+                    <!-- Card Details -->
+                    <div class="p-3.5 sm:p-4">
+                        <a href="{{ route('catalog.store', $product->store->slug) }}" class="text-[11px] font-semibold uppercase tracking-wider text-brand-700 hover:underline mb-1 block truncate">
                             {{ $product->store->name }}
-                        </p>
-                        <h3 class="font-display text-sm font-bold text-stone-900 line-clamp-2 leading-snug group-hover:text-emerald-700 transition">
-                            {{ $product->name }}
-                        </h3>
-                    </div>
-                    <div class="mt-4 pt-3 border-t border-stone-100 flex items-baseline justify-between">
-                        <span class="font-display text-base font-extrabold text-stone-900">
-                            Rp {{ number_format((float) $product->price, 0, ',', '.') }}
-                        </span>
-                        <span class="text-[11px] text-stone-400 font-medium">
-                            Sisa {{ $product->stock }}
-                        </span>
+                        </a>
+                        <a href="{{ route('catalog.show', $product->slug) }}">
+                            <h3 class="font-display text-sm font-bold text-stone-900 line-clamp-2 leading-snug group-hover:text-brand-700 transition">
+                                {{ $product->name }}
+                            </h3>
+                        </a>
                     </div>
                 </div>
-            </a>
+
+                <!-- Price & Quick Add Button -->
+                <div class="p-3.5 sm:p-4 pt-0">
+                    <div class="pt-3 border-t border-stone-100 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="font-display text-sm sm:text-base font-extrabold text-stone-900 block leading-tight">
+                                Rp {{ number_format((float) $product->price, 0, ',', '.') }}
+                            </span>
+                            <span class="text-[10px] text-stone-400 font-medium">Sisa {{ $product->stock }}</span>
+                        </div>
+
+                        @auth
+                            @if (auth()->user()->isCustomer())
+                                <form method="POST" action="{{ route('cart.add', $product) }}">
+                                    @csrf
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="bg-brand-700 hover:bg-brand-800 text-white font-bold text-xs px-3 py-1.5 rounded-xl transition shadow-sm active:scale-95 flex items-center gap-1">
+                                        <span>+</span>
+                                        <span class="hidden sm:inline">Tambah</span>
+                                    </button>
+                                </form>
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}" class="text-brand-700 hover:bg-brand-50 border border-brand-200 font-bold text-xs px-2.5 py-1.5 rounded-xl transition">
+                                + Tambah
+                            </a>
+                        @endauth
+                    </div>
+                </div>
+            </div>
         @endforeach
     </div>
 

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'GANDENG') — Gerakan Anak Nusantara Dagang</title>
+    <title>@yield('title', 'GANDENG')</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo-icon.svg') }}">
     
     <!-- Google Fonts: Plus Jakarta Sans (Headings) & Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,14 +50,9 @@
 <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200/80">
     <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
         <!-- Logo -->
-        <a href="{{ route('home') }}" class="flex items-center gap-2 group">
-            <div class="w-8 h-8 rounded-lg bg-brand-700 text-white flex items-center justify-center font-display font-extrabold text-lg shadow-sm group-hover:bg-brand-800 transition">
-                G
-            </div>
-            <div class="flex flex-col">
-                <span class="font-display font-extrabold text-lg text-stone-900 tracking-tight leading-none">GANDENG</span>
-                <span class="text-[10px] text-stone-500 font-medium tracking-wider uppercase mt-0.5">Pasar UMKM</span>
-            </div>
+        <a href="{{ route('home') }}" class="flex items-center gap-2.5 group">
+            <img src="{{ asset('images/logo-icon.svg') }}" alt="GANDENG" class="w-8 h-8 rounded-xl shadow-sm group-hover:scale-105 transition">
+            <span class="font-display font-extrabold text-xl text-stone-900 tracking-tight leading-none">GANDENG</span>
         </a>
 
         <!-- Quick Links -->
@@ -121,7 +117,7 @@
 </nav>
 
 <!-- Content Body -->
-<main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
+<main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8 pb-28">
     {{-- Feedback Alerts --}}
     @if (session('success'))
         <div class="mb-6 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3 text-sm flex items-start gap-3 shadow-sm">
@@ -154,15 +150,41 @@
 <!-- Footer -->
 <footer class="bg-white border-t border-stone-200 mt-16 py-8 text-stone-500 text-xs">
     <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-            <span class="font-display font-bold text-stone-800 text-sm">GANDENG</span>
-            <span class="text-stone-400 ml-2">Gerakan Anak Nusantara Dagang</span>
+        <div class="flex items-center gap-2">
+            <img src="{{ asset('images/logo-icon.svg') }}" alt="GANDENG" class="w-5 h-5 rounded-md">
+            <span class="font-display font-bold text-stone-800 text-sm tracking-tight">GANDENG</span>
         </div>
         <p class="text-stone-400 text-center sm:text-right">
             Proyek UAS Web Application Development &copy; {{ date('Y') }}
         </p>
     </div>
 </footer>
+
+<!-- GoFood-Style Floating Sticky Cart Pill -->
+@auth
+    @if (auth()->user()->isCustomer() && session('cart') && count(session('cart')) > 0)
+        @php
+            $totalCartItems = array_sum(session('cart'));
+        @endphp
+        <div class="fixed bottom-6 inset-x-0 z-40 px-4 max-w-md mx-auto pointer-events-none">
+            <a href="{{ route('cart.index') }}" class="pointer-events-auto bg-brand-700 hover:bg-brand-800 text-white px-5 py-3.5 rounded-2xl shadow-xl hover:shadow-2xl flex items-center justify-between transition-all duration-200 border border-brand-600/40 group">
+                <div class="flex items-center gap-3">
+                    <span class="bg-white/20 backdrop-blur-sm px-2.5 py-1 rounded-xl text-xs font-extrabold tracking-tight">
+                        {{ $totalCartItems }} Menu
+                    </span>
+                    <div class="text-xs text-left">
+                        <p class="font-medium text-brand-100 text-[11px] leading-tight">Keranjang Belanja</p>
+                        <p class="font-bold text-white text-xs leading-tight">Lihat Pesanan &rarr;</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1.5 text-xs font-bold bg-white text-brand-800 px-3.5 py-2 rounded-xl shadow-sm group-hover:bg-brand-50 transition">
+                    <span>Buka</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                </div>
+            </a>
+        </div>
+    @endif
+@endauth
 
 </body>
 </html>
