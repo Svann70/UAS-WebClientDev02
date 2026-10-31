@@ -155,6 +155,7 @@ Semua akun menggunakan kata sandi bawaan: **`password123`**
 
 ## 7. Deliverables Mahasiswa
 - **Source Code**: Repositori GitHub `https://github.com/Svann70/UAS-WebClientDev02`
+- **Live Deployment URL**: `https://gandeng-umkm.up.railway.app`
 - **Database Dump**: `database/gandeng_db.sql`
 - **Konfigurasi Environment**: `.env.example`
 - **Dokumentasi & Panduan**: `README.md`
