@@ -4,32 +4,32 @@
 
 @section('content')
 <!-- GoFood-Style Store Header -->
-<div class="bg-white border border-stone-200/90 rounded-2xl p-6 sm:p-8 mb-8 shadow-sm">
-    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+<div class="bg-white border border-stone-200/90 rounded-2xl p-4 sm:p-8 mb-6 sm:mb-8 shadow-sm">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
         @if ($store->logo)
             <img src="{{ asset('storage/' . $store->logo) }}" alt="{{ $store->name }}"
-                 class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border border-stone-200 shadow-sm shrink-0">
+                 class="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl object-cover border border-stone-200 shadow-sm shrink-0">
         @else
-            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-brand-50 border border-brand-200 text-brand-700 flex items-center justify-center font-display font-extrabold text-2xl sm:text-3xl shadow-sm shrink-0">
+            <div class="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-brand-50 border border-brand-200 text-brand-700 flex items-center justify-center font-display font-extrabold text-2xl sm:text-3xl shadow-sm shrink-0">
                 {{ mb_substr($store->name, 0, 1) }}
             </div>
         @endif
 
         <div class="flex-1 min-w-0">
-            <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                <span class="inline-flex items-center gap-1 bg-brand-50 text-brand-700 border border-brand-200/60 px-2.5 py-0.5 rounded-full text-[11px] font-bold">
-                    <svg class="w-3.5 h-3.5 text-brand-600" fill="currentColor" viewBox="0 0 20 20">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+                <span class="inline-flex items-center gap-1 bg-brand-50 text-brand-700 border border-brand-200/60 px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold">
+                    <svg class="w-3 h-3 text-brand-600" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
                     </svg>
                     Mitra UMKM Juara
                 </span>
-                <span class="inline-flex items-center gap-1 text-stone-500 text-xs font-medium">
+                <span class="inline-flex items-center gap-1 text-stone-500 text-[11px] sm:text-xs font-medium">
                     <svg class="w-3.5 h-3.5 text-stone-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                     {{ $store->city }}
                 </span>
             </div>
 
-            <h1 class="font-display text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight mb-2">
+            <h1 class="font-display text-xl sm:text-3xl font-extrabold text-stone-900 tracking-tight mb-1.5 sm:mb-2">
                 {{ $store->name }}
             </h1>
 
@@ -39,10 +39,10 @@
                 </p>
             @endif
 
-            <div class="mt-4 pt-3 border-t border-stone-100 flex items-center gap-4 text-xs font-semibold text-stone-500">
+            <div class="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-stone-100 flex items-center gap-3 sm:gap-4 text-[11px] sm:text-xs font-semibold text-stone-500">
                 <span>{{ $products->total() }} Menu Tersedia</span>
                 <span>&bull;</span>
-                <span class="text-amberbrand-600">Terima Pengiriman Nusantara</span>
+                <span class="text-amberbrand-600">Pengiriman Daerah</span>
             </div>
         </div>
     </div>

@@ -48,68 +48,66 @@
 
 <!-- Main Navigation -->
 <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200/80">
-    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+    <div class="max-w-6xl mx-auto px-3.5 sm:px-4 h-16 flex items-center justify-between gap-2 sm:gap-4">
         <!-- Logo -->
-        <a href="{{ route('home') }}" class="flex items-center gap-2.5 group">
+        <a href="{{ route('home') }}" class="flex items-center gap-2 group shrink-0">
             <img src="{{ asset('images/logo-icon.svg') }}" alt="GANDENG" class="w-8 h-8 rounded-xl shadow-sm group-hover:scale-105 transition">
-            <span class="font-display font-extrabold text-xl text-stone-900 tracking-tight leading-none">GANDENG</span>
+            <span class="font-display font-extrabold text-lg sm:text-xl text-stone-900 tracking-tight leading-none">GANDENG</span>
         </a>
 
         <!-- Quick Links -->
-        <div class="flex items-center gap-1 sm:gap-4 text-sm font-medium">
-            <a href="{{ route('catalog.index') }}" class="px-3 py-1.5 rounded-md text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition">
+        <div class="flex items-center gap-1 sm:gap-3 text-sm font-medium">
+            <a href="{{ route('catalog.index') }}" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition text-xs sm:text-sm">
                 Katalog
             </a>
 
             @auth
                 @if (auth()->user()->isCustomer())
-                    <a href="{{ route('cart.index') }}" class="px-3 py-1.5 rounded-md text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition flex items-center gap-1.5">
-                        <svg class="w-4 h-4 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                        <span>Keranjang</span>
+                    <a href="{{ route('cart.index') }}" class="px-2 sm:px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition flex items-center gap-1.5 text-xs sm:text-sm">
+                        <div class="relative">
+                            <svg class="w-4 h-4 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                            @if(session('cart') && count(session('cart')) > 0)
+                                <span class="absolute -top-1.5 -right-2 bg-brand-700 text-white text-[9px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center">
+                                    {{ array_sum(session('cart')) }}
+                                </span>
+                            @endif
+                        </div>
+                        <span class="hidden sm:inline">Keranjang</span>
                     </a>
-                    <a href="{{ route('orders.index') }}" class="px-3 py-1.5 rounded-md text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition">
+                    <a href="{{ route('orders.index') }}" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition text-xs sm:text-sm">
                         Pesanan
                     </a>
                 @elseif (auth()->user()->isMerchant())
-                    <a href="{{ route('merchant.dashboard') }}" class="px-3 py-1.5 rounded-md text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition">
+                    <a href="{{ route('merchant.dashboard') }}" class="px-2 sm:px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition text-xs sm:text-sm">
                         Dashboard
                     </a>
-                    <a href="{{ route('merchant.products.index') }}" class="px-3 py-1.5 rounded-md text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition">
-                        Produk Toko
+                    <a href="{{ route('merchant.products.index') }}" class="px-2 sm:px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition text-xs sm:text-sm">
+                        Produk
                     </a>
-                    <a href="{{ route('merchant.store.edit') }}" class="px-3 py-1.5 rounded-md text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition">
+                    <a href="{{ route('merchant.store.edit') }}" class="hidden sm:inline-block px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition text-xs sm:text-sm">
                         Profil Toko
                     </a>
                 @elseif (auth()->user()->isAdmin())
-                    <a href="{{ route('admin.dashboard') }}" class="px-3 py-1.5 rounded-md text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition">
+                    <a href="{{ route('admin.dashboard') }}" class="px-2 sm:px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition text-xs sm:text-sm">
                         Dashboard
                     </a>
-                    <a href="{{ route('admin.stores.index') }}" class="px-3 py-1.5 rounded-md text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition">
+                    <a href="{{ route('admin.stores.index') }}" class="px-2 sm:px-3 py-1.5 rounded-lg text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition text-xs sm:text-sm">
                         Mitra
-                    </a>
-                    <a href="{{ route('admin.categories.index') }}" class="px-3 py-1.5 rounded-md text-stone-600 hover:text-stone-900 hover:bg-stone-100 transition">
-                        Kategori
                     </a>
                 @endif
 
-                <div class="h-4 w-px bg-stone-300 mx-1 hidden sm:block"></div>
-
-                <div class="flex items-center gap-2">
-                    <span class="text-stone-500 text-xs hidden md:inline truncate max-w-[120px]">{{ auth()->user()->name }}</span>
-                    <form method="POST" action="{{ route('logout') }}" class="inline">
-                        @csrf
-                        <button type="submit" class="px-3 py-1.5 text-xs font-semibold rounded-md text-stone-600 hover:text-red-700 hover:bg-red-50 transition border border-stone-200">
-                            Keluar
-                        </button>
-                    </form>
-                </div>
+                <form method="POST" action="{{ route('logout') }}" class="inline">
+                    @csrf
+                    <button type="submit" class="px-2 sm:px-3 py-1.5 text-xs text-stone-500 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition font-medium border border-stone-200">
+                        Keluar
+                    </button>
+                </form>
             @else
-                <div class="h-4 w-px bg-stone-200 mx-1 hidden sm:block"></div>
-                <a href="{{ route('login') }}" class="px-3 py-1.5 text-stone-700 hover:text-stone-900 font-semibold transition">
+                <a href="{{ route('login') }}" class="px-2.5 sm:px-3 py-1.5 rounded-lg text-stone-700 hover:text-stone-900 font-semibold transition text-xs sm:text-sm">
                     Masuk
                 </a>
-                <a href="{{ route('register') }}" class="bg-brand-700 hover:bg-brand-800 text-white px-4 py-1.5 rounded-md font-semibold text-xs transition shadow-sm">
-                    Daftar Akun
+                <a href="{{ route('register') }}" class="bg-brand-700 hover:bg-brand-800 text-white px-3 sm:px-4 py-1.5 rounded-lg font-semibold text-xs transition shadow-sm">
+                    Daftar
                 </a>
             @endauth
         </div>
@@ -117,7 +115,7 @@
 </nav>
 
 <!-- Content Body -->
-<main class="flex-1 max-w-6xl mx-auto w-full px-4 py-8 pb-28">
+<main class="flex-1 max-w-6xl mx-auto w-full px-3.5 sm:px-4 py-5 sm:py-8 pb-28">
     {{-- Feedback Alerts --}}
     @if (session('success'))
         <div class="mb-6 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3 text-sm flex items-start gap-3 shadow-sm">
