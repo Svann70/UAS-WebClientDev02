@@ -158,9 +158,9 @@
     </div>
 </footer>
 
-<!-- GoFood-Style Floating Sticky Cart Pill -->
+<!-- GoFood-Style Floating Sticky Cart Pill (Hanya tampil di luar halaman keranjang & checkout) -->
 @auth
-    @if (auth()->user()->isCustomer() && session('cart') && count(session('cart')) > 0)
+    @if (auth()->user()->isCustomer() && session('cart') && count(session('cart')) > 0 && !request()->routeIs('cart.index', 'checkout.index'))
         @php
             $totalCartItems = array_sum(session('cart'));
         @endphp
