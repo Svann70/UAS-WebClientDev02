@@ -42,7 +42,9 @@ class CatalogController extends Controller
             ->paginate(12)
             ->withQueryString(); // filter tetap menempel saat pindah halaman
 
-        $categories = Category::orderBy('name')->get();
+        $categories = Category::withCount(['products' => fn ($q) => $q->where('is_active', true)])
+            ->orderBy('name')
+            ->get();
 
         return view('catalog.index', compact('products', 'categories'));
     }
