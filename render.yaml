@@ -1,31 +1,30 @@
 services:
   - type: web
     name: gandeng-web
-    env: docker
+    runtime: image
     plan: free
     region: singapore
     dockerfilePath: ./Dockerfile
     healthCheckPath: /
     envVars:
       - key: APP_ENV
-        value: production
+        value: "production"
       - key: APP_DEBUG
-        value: false
+        value: "false"
       - key: APP_KEY
         generateValue: true
       - key: APP_URL
-        value: https://gandeng-web.onrender.com
+        value: "https://gandeng-web.onrender.com"
       - key: RUN_MIGRATIONS
-        value: true
+        value: "true"
       - key: RUN_SEED
-        value: true
+        value: "true"
       - key: DB_CONNECTION
-        value: mysql
-      # Nilai host, database, user, password diisi dari koneksi MySQL Render/Aiven/Railway
+        value: "mysql"
       - key: DB_HOST
         sync: false
       - key: DB_PORT
-        value: 3306
+        value: "3306"
       - key: DB_DATABASE
         sync: false
       - key: DB_USERNAME
