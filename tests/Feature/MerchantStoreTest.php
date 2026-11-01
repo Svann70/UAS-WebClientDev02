@@ -98,7 +98,7 @@ class MerchantStoreTest extends TestCase
         $m = $this->merchant();
 
         $this->actingAs($m)->put('/merchant/store', $this->payload([
-            'logo' => UploadedFile::fake()->image('logo toko.png', 200, 200),
+            'logo' => UploadedFile::fake()->create('logo toko.png', 100, 'image/png'),
         ]));
 
         $store = Store::where('user_id', $m->id)->firstOrFail();
@@ -113,13 +113,13 @@ class MerchantStoreTest extends TestCase
         $m = $this->merchant();
 
         $this->actingAs($m)->put('/merchant/store', $this->payload([
-            'logo' => UploadedFile::fake()->image('lama.jpg'),
+            'logo' => UploadedFile::fake()->create('lama.jpg', 100, 'image/jpeg'),
         ]));
         $store = Store::where('user_id', $m->id)->firstOrFail();
         $old = $store->logo;
 
         $this->actingAs($m)->put('/merchant/store', $this->payload([
-            'logo' => UploadedFile::fake()->image('baru.jpg'),
+            'logo' => UploadedFile::fake()->create('baru.jpg', 100, 'image/jpeg'),
         ]));
 
         Storage::disk('public')->assertMissing($old);

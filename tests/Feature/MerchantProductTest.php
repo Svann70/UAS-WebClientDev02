@@ -84,7 +84,7 @@ class MerchantProductTest extends TestCase
         $m = $this->merchantWithStore();
 
         $this->actingAs($m)->post('/merchant/products', $this->payload([
-            'image' => UploadedFile::fake()->image('foto produk saya.png', 400, 400),
+            'image' => UploadedFile::fake()->create('foto produk saya.png', 100, 'image/png'),
         ]))->assertRedirect();
 
         $product = Product::where('store_id', $m->store->id)->firstOrFail();
@@ -138,14 +138,14 @@ class MerchantProductTest extends TestCase
         $m = $this->merchantWithStore();
 
         $this->actingAs($m)->post('/merchant/products', $this->payload([
-            'image' => UploadedFile::fake()->image('lama.jpg'),
+            'image' => UploadedFile::fake()->create('lama.jpg', 100, 'image/jpeg'),
         ]));
         $product = Product::where('store_id', $m->store->id)->firstOrFail();
         $oldPath = $product->image;
 
         $this->actingAs($m)->put("/merchant/products/{$product->id}", $this->payload([
             'name' => $product->name,
-            'image' => UploadedFile::fake()->image('baru.jpg'),
+            'image' => UploadedFile::fake()->create('baru.jpg', 100, 'image/jpeg'),
         ]));
 
         Storage::disk('public')->assertMissing($oldPath);
